@@ -1,4 +1,5 @@
-import /* we need our action types here*/ "../actions";
+import { GET_START, GET_SUCCESS, GET_FAILED } from "../actions";
+
 const initialState = {
   characters: []
   // Array characters, Boolean fetching, null error.
