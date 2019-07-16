@@ -1,8 +1,11 @@
 import { GET_START, GET_SUCCESS, GET_FAILED } from "../actions";
 
+// all state values need an initial value
 const initialState = {
-  characters: []
   // Array characters, Boolean fetching, null error.
+  characters: [],
+  fetching: true,
+  error: null
 };
 export const charsReducer = (state = initialState, action) => {
   switch (action.type) {
