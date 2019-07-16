@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAction } from "../actions"
-
 import { CharacterList } from "../components";
 // import actions
+import { getAction } from "../actions"
 
 class CharacterListView extends React.Component {
   constructor() {
