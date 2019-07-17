@@ -4,14 +4,38 @@ import { GET_START, GET_SUCCESS, GET_FAILED } from "../actions";
 const initialState = {
   // Array characters, Boolean fetching, null error.
   characters: [],
-  fetching: true,
+  fetching: false,
   error: null
 };
+
 export const charsReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Fill me in with the important reducers
-    // action types should be FETCHING, SUCCESS and FAILURE
-    // your switch statement should handle all of these cases.
+
+    // action type FETCHING
+    case GET_START: {
+			return {
+				...state,
+				fetching: true,
+			}
+    }
+    // action type SUCCESS
+		case GET_SUCCESS: {
+      const characters = action.payload
+      console.log(characters)
+			return {
+				...state,
+				fetching: false,
+				error: null
+			}
+		}
+    // action type FAILURE
+		case GET_FAILED: {
+			return {
+				...state,
+				fetching: false,
+				error: action.payload.message,
+			}
+		}
     default:
       return state;
   }

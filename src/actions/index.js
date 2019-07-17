@@ -22,12 +22,10 @@ export function getAction() {
 
 		axios.get('https://swapi.co/api/people/')
 			.then((res) => {
-                console.log(res.data.results)
 				dispatch({ type: GET_SUCCESS, payload: res.data.results })
 			})
 			.catch((err) => {
-                console.log(err.response.data)
-				dispatch({ type: GET_FAILED, payload: err.response.data })
+				dispatch({ type: GET_FAILED, payload: err })
 			})
 	}
 }
