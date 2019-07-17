@@ -5,25 +5,25 @@ import { CharacterList } from "../components";
 import { getAction } from "../actions"
 
 class CharacterListView extends React.Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   componentDidMount() {
     // call our action
     this.props.getAction()
+
+    console.log(this.props.characters)
   }
 
   render() {
-    console.log(this.props.characters)
-
-    if (true) {
+    if (this.props.fetching) {
       // return something here to indicate that you are fetching data
       return ( <div>Loading ... </div> )
     }
     return (
       <div className="CharactersList_wrapper">
-        {/* <CharacterList characters={this.props.characters} /> */}
+        <CharacterList characters={this.props.characters} />
       </div>
     );
   }
@@ -32,9 +32,11 @@ class CharacterListView extends React.Component {
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
 const mapStateToProps = (state) => {
+  console.log(state, "State")
 	return {
-    characters: state.characters,
-    fetching: state.fetching
+    characters: state.charsReducer.characters,
+    fetching: state.fetching,
+    error: state.error
 	}
 }
 
