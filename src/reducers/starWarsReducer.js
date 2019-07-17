@@ -20,10 +20,9 @@ export const charsReducer = (state = initialState, action) => {
     }
     // action type SUCCESS
 		case GET_SUCCESS: {
-      const characters = action.payload
-      console.log(characters)
 			return {
-				...state,
+        ...state,
+        characters: action.payload,
 				fetching: false,
 				error: null
 			}
